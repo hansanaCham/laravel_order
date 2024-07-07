@@ -13,10 +13,16 @@ class Order extends Model
     protected $fillable = [
         'product_name',
         'quantity',
+        'unit_price',
         'customer_name',
         'address',
         'phone_number',        
     ];
 
     protected $dates = ['deleted_at'];
+
+    public function user()
+  {
+    return $this->belongsTo(User::class);
+  }
 }

@@ -35,10 +35,10 @@ class AuthController extends Controller
             'password' => 'required|string'
         ]);
     
-        // Check email
+      
         $user = User::where('email', $fields['email'])->first();
     
-        // Check password
+       
         if (!$user || !Hash::check($fields['password'], $user->password)) {
             return response([
                 'message' => 'Invalid credentials'
@@ -56,10 +56,10 @@ class AuthController extends Controller
     }
 
     public function signOut(Request $request) {
-        // Get the authenticated user
+       
         $user = auth()->user();
     
-        // Revoke all tokens for the user
+        
         $user->tokens()->delete();
     
         return response([
